@@ -31,7 +31,7 @@ import random
 import re
 import sqlite3
 from sqlite3 import Error
-urlTo_valSystem= "./"   #C:\Users\info\Documents\PSAavm\Code and Data
+urlTo_valSystem= r"C:\Users\info\Documents\PSAavm\Code and Data"   #./
 website = 'http://www.mwpic.com.hk/CheckLogin.php'
 
 
