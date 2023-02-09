@@ -4,7 +4,7 @@ payload = {
     'SearchType': '1'
     }
 
-
+add_num=20000
 
 
 
@@ -452,7 +452,7 @@ def main():
     last_code=int(rows[0][-1])
 
     start_range = last_code-0  #5658881 #=last_code-700, end_code=last_code+200 (700,200 to be confirmed)
-    end_code=last_code+20000
+    end_code=last_code+ add_num
     jump_range = 1000
     time_wait = random.randint(1,2)
     count=0
@@ -1329,7 +1329,7 @@ if __name__ == '__main__':
 
         ##Set criteria for data selection for index construction
         st_year =1997 #If there is no transactions for the first input in the lm like KKAI, no index can be deduced.
-        next_year=datetime.datetime.now()+1
+        next_year=datetime.datetime.now().year+1
         st_date = datetime.datetime(st_year,1,1)
         year_change_max =0.2
         kmk_3 = kmk_2[kmk_2['instr_date']>=st_date] # transaction after st_date
