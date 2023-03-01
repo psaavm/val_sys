@@ -1,10 +1,10 @@
 payload = {
     'UserID': 'MWPSA',
-    'UserPWD': 'nsd1010',
+    'UserPWD': 'nsd1011',
     'SearchType': '1'
     }
 
-add_num=20000
+add_num=500000
 
 
 
@@ -1537,7 +1537,7 @@ if __name__ == '__main__':
 
     for district in district_df['d_code']:
         print(district)
-        if district in ['HTT','HSSW','HSL','HRB','HP','HMW','HME','HJL','HCB','HC']:
+        if district in ['HTT','HSSW','HSL','HRB','HP','HMW','HME','HJL','HCB','HC','HA']:
             print('Need replace')
             replace_url= urlTo_valSystem+ '/val_sys/HK_price_index.csv'
             kmk_price_index= pd.read_csv(replace_url, keep_default_na=False, index_col =0)
