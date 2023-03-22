@@ -486,7 +486,7 @@ def main():
 
         data_code = str(i) # data_code will be used again in other function
         url = 'http://www.mwpic.com.hk/Ppaview.php?ID='+ data_code.zfill(7)
-        print(i)
+        print('to download',i)
 
         try:
             request_html = session.get(url)
@@ -1581,13 +1581,16 @@ if __name__ == '__main__':
             grouped_price_index= pd.read_csv(urlTo_valSystem+ '/val_sys/NT_price_index.csv'.format(district), index_col=0, header=None,squeeze=True)
 
 
-        if current_date<15:  # instr_date at oftens comes at least 1 week before, need to accumulate enough data
+        if current_date<28:  # instr_date at oftens comes at least 3 weeks before, need to accumulate enough data
             subj_price_index[cur_year_mon]=subj_price_index[previous_year_mon]
-        elif current_date>=10 and current_date<15:
+        else:
+            grouped_price_index= pd.read_csv(urlTo_valSystem+ '/val_sys/full_HK_price_index.csv', index_col=0, header=None,squeeze=True)
+            subj_price_index[cur_year_mon]=(grouped_price_index[cur_year_mon]/grouped_price_index[previous_year_mon])*subj_price_index[previous_year_mon]
+        """elif current_date>=10 and current_date<15:
             grouped_price_index= pd.read_csv(urlTo_valSystem+ '/val_sys/full_HK_price_index.csv', index_col=0, header=None,squeeze=True)
             subj_price_index[cur_year_mon]=(grouped_price_index[cur_year_mon]/grouped_price_index[previous_year_mon])*subj_price_index[previous_year_mon]
         elif current_date>=15 and current_date<20:
-            subj_price_index[cur_year_mon]=(grouped_price_index[cur_year_mon]/grouped_price_index[previous_year_mon])*subj_price_index[previous_year_mon]
+            subj_price_index[cur_year_mon]=(grouped_price_index[cur_year_mon]/grouped_price_index[previous_year_mon])*subj_price_index[previous_year_mon]"""
 
         subj_price_index[year_next_month]=subj_price_index[cur_year_mon]  #In case index is not updated in the first few day of a new month
 
