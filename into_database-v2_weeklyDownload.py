@@ -236,6 +236,7 @@ def add_to_all_tables(conn, data_list):
         i_solic.reverse()
     except:
         print('no incumbrance found')
+        web_login=session.post(website, data=payload) #re-login to prevent a log out after checking the an incumbrance link
         pass
 
     #Insert address table
