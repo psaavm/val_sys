@@ -1,6 +1,6 @@
 payload = {
     'UserID': 'MWPSA',
-    'UserPWD': 'nsd1012',
+    'UserPWD': 'nsd1013',
     'SearchType': '1'
     }
 
@@ -1570,6 +1570,8 @@ if __name__ == '__main__':
         cur_year_mon = str(current_year)+"-"+str(current_month)
         year_next_month= str(current_year)+"-"+str(current_month+1)
         previous_month= (datetime.datetime.now()+ relativedelta(months=-1)).month
+        next_month= (datetime.datetime.now()+ relativedelta(months=1)).month
+        next_year= (datetime.datetime.now()+ relativedelta(months=1)).year
         year_for_previous= (datetime.datetime.now()+ relativedelta(months=-1)).year
         previous_year_mon= str(year_for_previous)+"-"+str(previous_month)
         subj_price_index= pd.read_csv(urlTo_valSystem+ '/val_sys/{}_price_index.csv'.format(district), index_col=0, header=None,squeeze=True)
@@ -1593,7 +1595,9 @@ if __name__ == '__main__':
         elif current_date>=15 and current_date<20:
             subj_price_index[cur_year_mon]=(grouped_price_index[cur_year_mon]/grouped_price_index[previous_year_mon])*subj_price_index[previous_year_mon]"""
 
-        subj_price_index[year_next_month]=subj_price_index[cur_year_mon]  #In case index is not updated in the first few day of a new month
+        subj_price_index[subj_price_index==100]=subj_price_index[cur_year_mon] # set all 100 value to cur year mon value, so 1997 one will be wrong
+        subj_price_index['1997-1']=100 #set back 1997-1 value
+        #subj_price_index[year_next_month]=subj_price_index[cur_year_mon]  #In case index is not updated in the first few day of a new month
 
         subj_price_index.to_csv(urlTo_valSystem+ '/val_sys/{}_price_index.csv'.format(district))
         print('finish price index')
