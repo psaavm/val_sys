@@ -1,6 +1,6 @@
 payload = {
     'UserID': 'MWPSA',
-    'UserPWD': 'nsd1013',
+    'UserPWD': 'nsd1014',
     'SearchType': '1'
     }
 
@@ -1339,7 +1339,7 @@ if __name__ == '__main__':
         #kmk_3 = kmk_3[kmk_3['op_date']>st_date] #age selection as proxy for price range control
 
         ## Index Period set to by Month
-        for year in range(st_year,next_year):
+        for year in range(st_year,next_year+1):
             for mon in range(1,13):
                 year_mon = str(year)+"-"+str(mon)
                 kmk_3[year_mon] = 0
@@ -1393,7 +1393,7 @@ if __name__ == '__main__':
         YY = (np.exp(lm.coef_)*100) # set 1997-1-1 level as 100
         y_axis = np.append([100],YY)
         x_axis = []
-        for year in range(st_year,next_year):
+        for year in range(st_year,next_year+1):
             for mon in range(1,13):
                 #for half in [1,16]:
                 year_mon = str(year)+"-"+str(mon) #+ '-' + str(half)
@@ -1472,7 +1472,7 @@ if __name__ == '__main__':
         #kmk_3 = kmk_3[kmk_3['op_date']>st_date] #age selection as proxy for price range control
 
         ## Index Period set to by Month
-        for year in range(st_year,next_year):
+        for year in range(st_year,next_year+1):
             for mon in range(1,13):
                 year_mon = str(year)+"-"+str(mon)
                 kmk_3[year_mon] = 0
@@ -1523,7 +1523,7 @@ if __name__ == '__main__':
         YY = (np.exp(lm.coef_)*100) # set 1997-1-1 level as 100
         y_axis = np.append([100],YY)
         x_axis = []
-        for year in range(st_year,next_year):
+        for year in range(st_year,next_year+1):
             for mon in range(1,13):
                 #for half in [1,16]:
                 year_mon = str(year)+"-"+str(mon) #+ '-' + str(half)
